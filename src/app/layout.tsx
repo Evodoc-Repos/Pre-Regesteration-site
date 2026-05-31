@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './heart-animations.css';
 
 export const metadata: Metadata = {
   title: 'EvoDoc — Clinical AI CoPilot for Modern Medicine',
