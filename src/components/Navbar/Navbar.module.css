@@ -1,0 +1,192 @@
+/* ─── Base nav ────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 52px;
+  background: linear-gradient(to bottom, rgba(6,6,6,0.92) 0%, transparent 100%);
+  backdrop-filter: blur(2px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  width: 30px; height: 30px;
+  background: var(--cyprus);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sand);
+  box-shadow: 0 0 20px rgba(0,70,67,0.45);
+  flex-shrink: 0;
+}
+
+/* ─── Desktop links ───────────────────────────────────────────────── */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(240,237,229,0.48);
+  letter-spacing: 0.15px;
+  transition: color 0.18s ease;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--text-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.link:hover { color: var(--text-primary); }
+.link:hover::after { transform: scaleX(1); }
+
+/* ─── Desktop CTA ─────────────────────────────────────────────────── */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cyprus);
+  background: var(--sand);
+  padding: 9px 20px;
+  border-radius: 100px;
+  letter-spacing: 0.1px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 24px rgba(240,237,229,0.12);
+  flex-shrink: 0;
+}
+
+.cta:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 32px rgba(240,237,229,0.2);
+}
+
+/* ─── Hamburger button ────────────────────────────────────────────── */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.burger:hover { background: rgba(255,255,255,0.07); }
+
+.burger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--sand);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+/* X state */
+.burgerOpen span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burgerOpen span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burgerOpen span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Mobile drawer ───────────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(8,8,8,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 20px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateY(-110%);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.drawerOpen {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawerLink {
+  display: block;
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(240,237,229,0.6);
+  border-radius: 10px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.drawerLink:hover {
+  color: var(--sand);
+  background: rgba(255,255,255,0.05);
+}
+
+.drawerCta {
+  display: block;
+  margin-top: 12px;
+  padding: 13px 18px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cyprus);
+  background: var(--sand);
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.drawerCta:hover { background: #fff; }
+
+/* ─── Responsive breakpoints ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav { padding: 16px 20px; }
+  .links { display: none; }
+  .cta  { display: none; }
+  .burger { display: flex; }
+}
+
+@media (min-width: 769px) {
+  .drawer { display: none; }
+  .burger { display: none; }
+}

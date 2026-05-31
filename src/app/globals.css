@@ -1,0 +1,50 @@
+/* ─── Reset & Tokens ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cyprus: #004643;
+  --cyprus-mid: #005e59;
+  --cyprus-light: #007a73;
+  --sand: #F0EDE5;
+  --sand-mid: #d9d4c7;
+  --bg: #060606;
+  --bg-card: #0a0a0a;
+  --text-primary: #F0EDE5;
+  --text-muted: rgba(240,237,229,0.45);
+  --text-dim: rgba(240,237,229,0.25);
+  --ecg-color: #b52b2b;
+  --ecg-glow: rgba(181,43,43,0.8);
+  --border-subtle: rgba(255,255,255,0.06);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ─── Responsive foundations ─────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  /* Prevent font size inflation on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Ensure iframes never break layout */
+iframe { max-width: 100%; }
+
+/* Larger tap targets on touch devices */
+@media (pointer: coarse) {
+  a, button { min-height: 44px; min-width: 44px; }
+}
+
