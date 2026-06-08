@@ -1,0 +1,147 @@
+/* ═══════════════════════════════════════════════
+   Footer
+   ═══════════════════════════════════════════════ */
+
+.footer {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: 60px 40px;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+.bgShape {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #002D26; /* Dark green matching the image */
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+}
+
+.leftColumn {
+  max-width: 250px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.logoDoctor {
+  margin: 0 4px;
+  font-size: 1.6rem;
+}
+
+.desc {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #d9d9d9;
+  margin-bottom: 24px;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.getStartedBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
+.linksContainer {
+  display: flex;
+  gap: 80px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.column a {
+  color: #d9d9d9;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.column a:hover {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .bgShape {
+    width: 100%;
+    height: 70%;
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .linksContainer {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}

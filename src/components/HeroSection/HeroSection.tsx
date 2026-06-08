@@ -1,9 +1,8 @@
 'use client';
 import styles from './HeroSection.module.css';
+import HeartAnimation from '@/components/HeartAnimation/HeartAnimation';
 import EvoDocCard from '@/components/EvoDocCard/EvoDocCard';
 import EvoCareCard from '@/components/EvoCareCard/EvoCareCard';
-import HeartAnimation from '@/components/HeartAnimation/HeartAnimation';
-import PulseLine from '@/components/PulseLine/PulseLine';
 
 export default function HeroSection() {
   return (
@@ -12,27 +11,21 @@ export default function HeroSection() {
       <div className={styles.ambientGlow} aria-hidden="true" />
 
       {/* ── Top tagline ── */}
-      <div className={styles.taglineTop}>
-        <span className={styles.eyebrow}>Clinical AI CoPilot</span>
+      <header className={styles.heroHeader}>
         <h1 className={styles.headline}>
-          Better care starts with<br />
-          <em>better tools.</em>
+          Better care starts with
+          <span className={styles.accent}>better tools.</span>
         </h1>
-      </div>
+      </header>
 
-      {/* ── Main row: Card | Heart (with full-width pulse behind) | Card ── */}
+      {/* ── Main row: Card | ECG | Card ── */}
       <div className={styles.centerRow}>
-        {/* Full-width pulse line sits behind everything */}
-        <div className={styles.pulseLayer} aria-hidden="true">
-          <PulseLine />
-        </div>
-
         {/* Left — EvoDoc */}
         <div className={styles.leftSlot}>
           <EvoDocCard />
         </div>
 
-        {/* Center — Heart iframe */}
+        {/* Center — Heart & Pulse Lines */}
         <div className={styles.centerSlot}>
           <HeartAnimation />
         </div>
@@ -48,12 +41,6 @@ export default function HeroSection() {
         <p className={styles.taglineSub}>
           One platform. Two experiences. Zero compromise.
         </p>
-        <div className={styles.taglinePill}>
-          <span className={styles.pillDot} />
-          <span>EvoDoc for Doctors</span>
-          <span className={styles.pillSep}>·</span>
-          <span>EvoCare for Patients</span>
-        </div>
       </div>
     </section>
   );

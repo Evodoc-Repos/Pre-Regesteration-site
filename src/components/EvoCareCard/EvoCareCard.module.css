@@ -1,181 +1,257 @@
 .card {
-  background: var(--sand);
-  border-radius: 20px;
-  padding: 28px 26px 26px;
-  border: 1px solid rgba(180,168,148,0.35);
-  box-shadow:
-    0 28px 70px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.85),
-    inset 0 -1px 0 rgba(0,0,0,0.04);
+  position: relative;
+  border-radius: 26px;
+  padding: 32px 32px 28px; /* Reduced padding */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.32s ease, box-shadow 0.32s ease;
   height: 100%;
-  box-sizing: border-box;
 }
 
-.card::before {
-  content: '';
+/* ----- RIGHT (EvoCare cream) ----- */
+.cardRight {
+  background: linear-gradient(160deg, #f6f2ec 0%, #f1ede6 55%, #e9e3d9 100%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Shiny glass gloss overlay */
+.cardRight::before {
+  content: "";
   position: absolute;
-  bottom: -60px; left: -60px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(0,70,67,0.06) 0%, transparent 70%);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.4) 45%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 55%
+  );
+  transform: rotate(15deg);
   pointer-events: none;
+  z-index: 1;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 40px 90px rgba(0,0,0,0.65),
-    inset 0 1px 0 rgba(255,255,255,0.95);
+.illo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.topRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.illoImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.6; /* Increased opacity */
+  mix-blend-mode: multiply; /* Helps darken it against the light background */
+  filter: blur(1px) brightness(0.8) contrast(1.2); /* Darken and increase contrast */
 }
 
-.badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 9px;
+.cardTitle {
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: rgba(0,70,67,0.45);
-  background: rgba(0,70,67,0.07);
-  border: 1px solid rgba(0,70,67,0.14);
-  border-radius: 50px;
-  padding: 5px 12px;
+  font-size: 38px;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
-.dot {
-  width: 4px; height: 4px;
-  background: var(--cyprus);
-  border-radius: 50%;
-  animation: dotBlink 2s ease-in-out infinite;
+.cardTitle span {
+  display: inline-block;
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 4s linear infinite;
 }
 
-@keyframes dotBlink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.2; }
+.a {
+  background-image: linear-gradient(
+    to right,
+    #0d9488 20%,
+    #2dd4bf 40%,
+    #0d9488 60%
+  );
+  text-shadow: 0 0 20px rgba(13, 148, 136, 0.2);
 }
 
-.indicator {
-  width: 28px; height: 28px;
-  border-radius: 8px;
-  background: rgba(0,70,67,0.07);
-  border: 1px solid rgba(0,70,67,0.12);
-  display: flex; align-items: center; justify-content: center;
-}
-
-.indicatorDot {
-  width: 8px; height: 8px;
-  background: var(--cyprus);
-  border-radius: 50%;
-  box-shadow: 0 0 9px rgba(0,70,67,0.45);
-  animation: dotBlink 2.2s ease-in-out infinite;
-}
-
-.heading {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 36px;
-  font-weight: 400;
-  color: var(--cyprus);
-  line-height: 1;
-  letter-spacing: -0.6px;
-  margin-bottom: 4px;
-}
-
-.headingAccent {
+.b {
+  background-image: linear-gradient(
+    to right,
+    #2dd4bf 20%,
+    #99f6e4 40%,
+    #2dd4bf 60%
+  );
   font-style: italic;
-  color: rgba(0,70,67,0.4);
+  text-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
 }
 
-.sub {
-  font-size: 10px;
-  font-weight: 700;
-  color: rgba(0,70,67,0.35);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+@keyframes textShine {
+  to {
+    background-position: 200% center;
+  }
 }
 
-.desc {
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(0,55,50,0.58);
-  margin-bottom: 20px;
+.cardSub {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.featureDesc {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #4a4540;
+  max-width: 280px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
 }
 
 .features {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
+  margin-bottom: 34px;
+  position: relative;
+  z-index: 2;
   list-style: none;
-  margin-bottom: 24px;
-  flex: 1;
 }
 
-.featureRow {
+.feature {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.featureIcon {
-  width: 26px; height: 26px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  background: rgba(0,70,67,0.08);
-  border-radius: 7px;
-  flex-shrink: 0;
-}
-
-.featureText {
-  font-size: 13px;
+  gap: 15px;
+  font-size: 17px;
   font-weight: 500;
-  color: rgba(0,55,50,0.62);
-  line-height: 1.4;
+  color: #2a2724;
+  cursor: pointer;
 }
 
-.cta {
+/* glass icon chip */
+.glassIcon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--sand);
-  background: var(--cyprus);
-  padding: 12px 18px;
-  border-radius: 12px;
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  letter-spacing: 0.1px;
+  background: rgba(13, 148, 136, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.18);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(13, 148, 136, 0.08);
+}
+
+.glassIcon svg {
+  stroke: #0d9488;
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke-width: 1.7;
+}
+
+/* shimmer sweep on hover */
+.glassIcon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transition: left 0.6s ease;
+}
+
+.feature:hover .glassIcon::after {
+  left: 130%;
+}
+
+/* full-width CTA */
+.cardCta {
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  
+  /* Metallic Gradient */
+  background: linear-gradient(
+    135deg, 
+    #0d9488 0%, 
+    #2dd4bf 25%, 
+    #0f766e 50%, 
+    #0d9488 100%
+  );
+  background-size: 200% auto;
+  color: #ffffff;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 
+    0 6px 20px rgba(13, 148, 136, 0.3), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
 }
 
-.cta:hover {
-  background: var(--cyprus-mid);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 28px rgba(0,70,67,0.3);
+.cardCta svg {
+  width: 17px;
+  height: 17px;
 }
 
-/* --- Responsive --------------------------------------------------- */
-@media (max-width: 899px) {
-  .card { padding: 24px 22px 22px; }
-  .heading { font-size: 30px; }
+.cardCta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
-@media (max-width: 599px) {
-  .card { border-radius: 16px; padding: 22px 18px 20px; }
-  .heading { font-size: 28px; }
-  .desc { font-size: 12.5px; }
-  .featureText { font-size: 12px; }
+.cardCta:hover {
+  transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: 
+    0 10px 30px rgba(45, 212, 191, 0.4), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cardCta:hover::after {
+  left: 200%;
 }

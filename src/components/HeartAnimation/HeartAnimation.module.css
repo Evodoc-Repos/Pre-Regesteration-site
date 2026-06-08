@@ -1,3 +1,77 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+.pulseSvg {
+  position: absolute;
+  top: 50%;
+  /* Expand slightly beyond 100% to bridge the padding gap to the cards perfectly */
+  left: -18px;
+  width: calc(100% + 36px);
+  transform: translateY(-50%);
+  height: 200px;
+  z-index: 1; /* Behind the heart */
+  pointer-events: none;
+  overflow: visible;
+}
+
+.traceLine {
+  fill: none;
+  stroke: rgba(255, 95, 109, 0.2);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pulseSpark {
+  fill: none;
+  stroke: #ff5f6d;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(255, 95, 109, 1));
+  stroke-dasharray: 80 1000;
+  /* Sync with the heartbeat. The heartbeat uses a 1.6s cycle (0.8s alternate) */
+  animation: shootOut 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 
+  Path length is exactly 300. Dash is 80.
+  0%: Dash starts at 80 (behind the center x=300).
+  100%: Dash ends at -340 (past the edge x=0 or x=600).
+*/
+@keyframes shootOut {
+  0% { 
+    stroke-dashoffset: 80; 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 1; 
+  }
+  90% { 
+    opacity: 1; 
+  }
+  100% { 
+    stroke-dashoffset: -340; 
+    opacity: 0; 
+  }
+}
+
+.heartWrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
 .wrapper {
   width: 100%;
   height: 100%;
@@ -5,4 +79,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+/* Let the low-poly SVG scale to the container */
+.wrapper svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }

@@ -11,8 +11,8 @@ export default function Navbar() {
       {/* Logo */}
       <Link href="/" className={styles.logo} aria-label="EvoDoc Home">
         <div className={styles.logoIcon} aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
-            <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+          <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21s-7.5-4.9-10-9.3C.5 8.6 2 5 5.4 5c2 0 3.3 1.1 4.1 2.3.4.6.5.9.5.9s.1-.3.5-.9C11.3 6.1 12.6 5 14.6 5 18 5 19.5 8.6 22 11.7 19.5 16.1 12 21 12 21z"/>
           </svg>
         </div>
         <span className={styles.logoText}>EvoDoc</span>
@@ -27,10 +27,10 @@ export default function Navbar() {
 
       {/* Desktop CTA */}
       <Link href="/early-access" className={styles.cta} id="nav-early-access">
-        Get Early Access
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor"
-          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M2 6h8M7 3l3 3-3 3"/>
+        <span>Get Early Access</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={styles.arrow}>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <polyline points="14 6 20 12 14 18"/>
         </svg>
       </Link>
 
