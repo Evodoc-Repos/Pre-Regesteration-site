@@ -1,100 +1,189 @@
-/* ═══════════════════════════════════════════════
-   Footer
-   ═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER  —  pure black, contrasts the #0a0a0a page body
+   ═══════════════════════════════════════════════════════════════ */
 
 .footer {
   position: relative;
-  background: #000;
-  color: #fff;
-  padding: 60px 40px;
+  background: #000000;
+  color: #e0f2f0;
   overflow: hidden;
-  font-family: var(--font-body);
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
-.bgShape {
+/* ── Bold glowing teal divider at very top ───────────────────── */
+.topGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #2dd4bf 20%,
+    #5eead4 50%,
+    #2dd4bf 80%,
+    transparent 100%
+  );
+}
+
+.topGlow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 40px;
+  background: radial-gradient(ellipse at center top, rgba(45, 212, 191, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Subtle corner glows */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.footer::after {
+  content: '';
   position: absolute;
   bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: #002D26; /* Dark green matching the image */
-  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
-  z-index: 0;
+  right: -60px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(181, 43, 43, 0.05) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.content {
+/* ── Main content area ───────────────────────────────────────── */
+.inner {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 72px 48px 48px;
   display: flex;
   gap: 80px;
-  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.leftColumn {
-  max-width: 250px;
+/* ── Brand column ────────────────────────────────────────────── */
+.brand {
+  flex: 0 0 260px;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
-}
-
-.logoDoctor {
-  margin: 0 4px;
-  font-size: 1.6rem;
-}
-
-.desc {
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: #d9d9d9;
-  margin-bottom: 24px;
-}
-
-.socials {
-  display: flex;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.icon {
-  width: 28px;
-  height: 28px;
-  background: #fff;
-  color: #000;
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #2dd4bf, #0d9488);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  font-size: 0.8rem;
+  box-shadow: 0 4px 16px rgba(45, 212, 191, 0.3);
+  flex-shrink: 0;
+}
+
+.logoIcon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+}
+
+.logoText {
+  font-size: 22px;
   font-weight: 700;
-  text-decoration: none;
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
-.getStartedBtn {
-  background: #fff;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  display: inline-block;
+.logoEvo {
+  color: #2dd4bf;
 }
 
-.linksContainer {
+.tagline {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(224, 242, 240, 0.5);
+  margin-bottom: 24px;
+}
+
+/* Product badges */
+.products {
   display: flex;
-  gap: 80px;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.productBadge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+.productBadge[data-variant='doc'] {
+  background: rgba(45, 212, 191, 0.15);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+
+.productBadge[data-variant='care'] {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(224, 242, 240, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  gap: 10px;
+}
+
+.socialLink {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(224, 242, 240, 0.6);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.socialLink svg {
+  width: 15px;
+  height: 15px;
+}
+
+.socialLink:hover {
+  background: rgba(45, 212, 191, 0.18);
+  color: #2dd4bf;
+  transform: translateY(-2px);
+}
+
+/* ── Nav columns ─────────────────────────────────────────────── */
+.nav {
   flex: 1;
+  display: flex;
+  gap: 48px;
   justify-content: flex-end;
 }
 
@@ -103,10 +192,13 @@
   flex-direction: column;
 }
 
-.column h4 {
-  font-size: 1rem;
+.colHead {
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #2dd4bf;
+  margin-bottom: 20px;
 }
 
 .column ul {
@@ -115,33 +207,99 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 13px;
 }
 
 .column a {
-  color: #d9d9d9;
-  font-size: 0.85rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(224, 242, 240, 0.45);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .column a:hover {
-  color: #fff;
+  color: #2dd4bf;
 }
 
-@media (max-width: 900px) {
-  .content {
+/* ── Bottom bar ──────────────────────────────────────────────── */
+.bottomBar {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 48px 32px;
+  border-top: 1px solid rgba(45, 212, 191, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.copy {
+  font-size: 12.5px;
+  color: rgba(224, 242, 240, 0.35);
+}
+
+.bottomLinks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottomLinks a {
+  font-size: 12.5px;
+  color: rgba(224, 242, 240, 0.35);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bottomLinks a:hover {
+  color: #2dd4bf;
+}
+
+.sep {
+  color: rgba(224, 242, 240, 0.2);
+  font-size: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .nav { gap: 32px; }
+  .inner { gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .inner {
     flex-direction: column;
-    gap: 60px;
+    padding: 56px 28px 36px;
+    gap: 44px;
   }
-  .bgShape {
-    width: 100%;
-    height: 70%;
-    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  .linksContainer {
+
+  .brand { flex: none; width: 100%; }
+
+  .nav {
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 36px;
   }
+
+  .bottomBar {
+    padding: 16px 28px 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner { padding: 44px 20px 28px; gap: 36px; }
+  .nav { gap: 28px; }
+  .bottomBar { padding: 14px 20px 24px; }
+  .column a { font-size: 13px; }
 }

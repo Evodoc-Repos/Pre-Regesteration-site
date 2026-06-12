@@ -87,3 +87,37 @@
   height: 100%;
   overflow: visible;
 }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+
+@media (max-width: 899px) {
+  .heartWrapper {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 599px) {
+  .heartWrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* Shrink the pulse SVG proportionally */
+  .pulseSvg {
+    height: 140px;
+  }
+}
+
+@media (max-width: 380px) {
+  .heartWrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .pulseSvg {
+    height: 110px;
+  }
+}

@@ -56,7 +56,7 @@ const ECG_PATH = [
   pqrst(580),               // right complex 1
   pqrst(640),               // right complex 2
   pqrst(700),               // right complex 3
-  `L 1000,${BASE}`,         // flat across right card
+  // path ends at ~x=760 where the last complex finishes — no trailing flat
 ].join(' ');
 
 // Estimated path length — used for stroke-dasharray
@@ -111,8 +111,8 @@ export default function PulseLine() {
         <path
           d={ECG_PATH}
           fill="none"
-          stroke="rgba(100,18,18,0.35)"
-          strokeWidth="1.2"
+          stroke="rgba(120,10,10,0.4)"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
           mask="url(#ecgFadeMask)"
@@ -123,8 +123,8 @@ export default function PulseLine() {
           className={styles.ecgLine}
           d={ECG_PATH}
           fill="none"
-          stroke="#b52b2b"
-          strokeWidth="1.6"
+          stroke="#8b1a1a"
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#ecgGlow)"
@@ -138,8 +138,8 @@ export default function PulseLine() {
           className={styles.ecgHead}
           d={ECG_PATH}
           fill="none"
-          stroke="#ff7878"
-          strokeWidth="3.5"
+          stroke="#ff2222"
+          strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#ecgHeadGlow)"

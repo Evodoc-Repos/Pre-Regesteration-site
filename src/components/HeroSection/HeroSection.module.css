@@ -247,6 +247,14 @@
     order: -1;
   }
 
+  .heartContainer {
+    height: 280px;
+    max-width: 280px;
+  }
+
+  /* PulseLine spans all 3 columns — hide on stacked layout */
+  .connectingEcg { display: none; }
+
   .headline { font-size: clamp(32px, 6vw, 44px); }
 }
 
@@ -254,22 +262,29 @@
 @media (max-width: 599px) {
   .hero { padding: 70px 16px 44px; gap: 20px; }
 
-  .headline { font-size: clamp(32px, 9vw, 44px); }
+  .headline { font-size: clamp(28px, 9vw, 40px); }
 
   .centerRow {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
-  .centerSlot {
-    order: -1;
+  .centerSlot { order: -1; }
+
+  .heartContainer {
+    height: 220px;
+    max-width: 220px;
   }
 
   .taglineSub { font-size: 13px; }
 }
 
 /* ── Very small / landscape phones (< 420px) ────────────────────── */
-@media (max-width: 419px) {
-  .hero { padding: 64px 12px 36px; }
-  .headline { font-size: 30px; }
+@media (max-width: 380px) {
+  .hero { padding: 60px 12px 36px; }
+  .headline { font-size: 26px; }
+  .heartContainer {
+    height: 180px;
+    max-width: 180px;
+  }
 }
