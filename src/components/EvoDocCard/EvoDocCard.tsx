@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './EvoDocCard.module.css';
 
 export default function EvoDocCard() {
@@ -65,13 +66,13 @@ export default function EvoDocCard() {
         </li>
       </ul>
 
-      <button className={styles.cardCta}>
+      <Link href="/evodoc" className={styles.cardCta} style={{ textDecoration: 'none' }}>
         Explore EvoDoc
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <line x1="4" y1="12" x2="20" y2="12" />
           <polyline points="14 6 20 12 14 18" />
         </svg>
-      </button>
+      </Link>
     </article>
   );
 }

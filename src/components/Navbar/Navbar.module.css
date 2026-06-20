@@ -1,13 +1,40 @@
-/* ─── Base nav ────────────────────────────────────────────────────── */
+/* ─── Base nav (Crazy Floating Island) ────────────────────────────────────────────────────── */
+@keyframes gradientSweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .nav {
-  position: relative;
-  z-index: 1000;
-  max-width: 1660px;
-  margin: 0 auto;
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5000;
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 26px 36px 0;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  
+  /* Animated Glassmorphism Gradient Background - Increased Opacity to hide text behind */
+  background: linear-gradient(270deg, rgba(15, 118, 110, 0.85), rgba(214, 243, 3, 0.8), rgba(11, 79, 74, 0.9), rgba(45, 212, 191, 0.85));
+  background-size: 300% 300%;
+  animation: gradientSweep 12s ease infinite;
+  
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(214, 243, 3, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.navHidden {
+  transform: translate(-50%, -150%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .logo {
@@ -52,15 +79,36 @@
 .link {
   color: #ffffff;
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 500;
-  opacity: 0.92;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.85;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #d6f303;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 8px #d6f303;
 }
 
 .link:hover {
   opacity: 1;
-  color: #2dd4bf;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.link:hover::after {
+  width: 60%;
 }
 
 /* ─── Desktop CTA ─────────────────────────────────────────────────── */
@@ -125,19 +173,20 @@
 /* ─── Mobile drawer ───────────────────────────────────────────────── */
 .drawer {
   position: fixed;
-  top: 64px; left: 0; right: 0;
-  background: rgba(8,8,8,0.97);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding: 20px 24px 28px;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transform: translateY(-110%);
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease;
   pointer-events: none;
-  z-index: 999;
+  z-index: 4000;
 }
 
 .drawerOpen {
@@ -150,42 +199,53 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
+  align-items: center;
 }
 
 .drawerLink {
   display: block;
-  padding: 12px 8px;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(240,237,229,0.6);
-  border-radius: 10px;
-  transition: color 0.15s, background 0.15s;
+  padding: 12px 24px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(240, 237, 229, 0.7);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .drawerLink:hover {
-  color: var(--sand);
-  background: rgba(255,255,255,0.05);
+  color: #fff;
+  transform: scale(1.05);
 }
 
 .drawerCta {
   display: block;
-  margin-top: 12px;
-  padding: 13px 18px;
+  margin-top: 32px;
+  padding: 16px 36px;
   text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--cyprus);
-  background: var(--sand);
-  border-radius: 12px;
-  transition: background 0.2s ease;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b4f4a;
+  background: #d6f303;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(214, 243, 3, 0.3);
 }
 
-.drawerCta:hover { background: #fff; }
+.drawerCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(214, 243, 3, 0.4);
+  background: #fff;
+}
 
 /* ─── Responsive breakpoints ──────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav { padding: 16px 20px; }
+  .nav { 
+    padding: 12px 20px; 
+    top: 16px;
+    width: 95%;
+  }
   .links { display: none; }
   .cta  { display: none; }
   .burger { display: flex; }

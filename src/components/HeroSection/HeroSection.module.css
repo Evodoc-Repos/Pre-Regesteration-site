@@ -260,9 +260,9 @@
 
 /* ── Mobile (< 600px) ───────────────────────────────────────────── */
 @media (max-width: 599px) {
-  .hero { padding: 70px 16px 44px; gap: 20px; }
+  .hero { padding: 90px 16px 44px; gap: 16px; }
 
-  .headline { font-size: clamp(28px, 9vw, 40px); }
+  .headline { font-size: clamp(28px, 8vw, 40px); }
 
   .centerRow {
     grid-template-columns: 1fr;
@@ -272,8 +272,8 @@
   .centerSlot { order: -1; }
 
   .heartContainer {
-    height: 220px;
-    max-width: 220px;
+    height: 180px;
+    max-width: 180px;
   }
 
   .taglineSub { font-size: 13px; }
